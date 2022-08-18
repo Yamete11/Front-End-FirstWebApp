@@ -1,30 +1,57 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <div class="nav">
+    <router-link class="link link-home" :to="{ name: 'home'}">Home</router-link> |
+    <router-link class="link link-base" :to="{ name: 'database'}">Database</router-link>
+  </div>
   <router-view/>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.nav{
   text-align: center;
-  color: #2c3e50;
+  margin-top: 30px;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
+.link{
+  position: relative;
+  border: none;
+  margin: 15px;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
   font-weight: bold;
-  color: #2c3e50;
+  font-family: sans-serif;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+.link::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.175rem;
+  left: 0;
+  bottom: 0;
+  background: black;
+  cursor: pointer;
 }
+.link::after{
+  transform: scale(0, 1);
+  transition: 0.3s ease;
+}
+
+.link:hover::after{
+  transform: scale(1, 1);
+}
+
+.database.router-link-exact-active::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 0.175rem;
+  left: 0;
+  bottom: 0;
+  background: black;
+  transform: scale(1, 1);
+}
+
+
 </style>
